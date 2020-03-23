@@ -5,8 +5,6 @@ import { inject,observer } from 'mobx-react';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 
-// function UserList({ store }) {
-
   const override = css`
   display: block;
   margin: 0 auto;
@@ -14,39 +12,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 `;
 
 class UserList extends Component {
-
-  // Initialize the state
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     userRepositories: [],
-  //     userOrganizations:[] 
-  //   }
-  // }
-
-  // Fetch the list on first mount
-  // componentDidMount() {
-  //   // this.userRepositories(this.props.location.data);
-  //   this.userOrganizations();
-  // }
-
-  // async userRepositories(userName) {
-  //   if (userName || userName !== "" || userName !== null) {
-  //     const res = await getRepos(userName);
-  //     this.setState({ userRepositories: res });
-  //   }
-  // }
-
-  // async userOrganizations(userData) {
-  //   if (userData || userData !== "" || userData !== null) {
-  //     const data = await getUserData(userData);
-  //     this.setState({ userOrganizations: data.orgs });
-  //   }
-  // }
-
   render() { 
   const { store } = this.props;
-  const { router: {goTo} } = store;
   const { userRepos, userOrgs } = this.props.store.app;
 
   
@@ -54,7 +21,6 @@ class UserList extends Component {
       <div className="list-results">
         <div>
           <h2>List of Repositories</h2>
-          {/* Check to see if any items are found*/}
           {store.app.loading ?
           <ClipLoader
             css={override}
@@ -64,7 +30,6 @@ class UserList extends Component {
           />: <p/>}
           {userRepos.length ? (
            <div>
-           {/* Render the list of items */}
            {userRepos.map((user) => {
              return(
                <div key={user.id}>

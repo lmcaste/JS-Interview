@@ -19,6 +19,10 @@ render((
     <div className="index">
       <h1>{store.app.title}</h1>
       <MobxRouter/>
+      <div className="footer">
+          <img src={require('../src/assets/logo-large.png')} className="github" alt="git-hub-logo"/>
+          <img src={require('../src/assets/mini-logo.svg')} className="cathub" alt="cat-hub-logo"/>
+      </div>
     </div>
   </Provider>
 ), document.getElementById('root'));
@@ -27,5 +31,3 @@ render((
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-// playing around in the console

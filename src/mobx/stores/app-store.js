@@ -24,8 +24,13 @@ class AppStore {
     if (userName || userName !== "" || userName !== null) {
       this.setLoader(true);
       const res = await getRepos(userName);
-      this.userRepos = res;
-      this.setLoader(false);
+      if (res.message === 'Not Found') {
+        console.log('oops')
+      }
+      else {
+        this.userRepos = res;
+        this.setLoader(false);
+      } 
     }
   });
 

@@ -4,18 +4,10 @@ import views from '../config/views';
 import { inject, observer } from "mobx-react"
 
 class Home extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     username: ''
-  //   }
-  // }
-
   submitReview = (e) => {
     e.preventDefault();
 		this.props.store.app.userRepositories(this.state.username);
     this.props.store.app.userOrganizations(this.state.username);
-
 	};
 
   handleChange = event => {
@@ -24,7 +16,7 @@ class Home extends Component {
 
   render() { 
     const {store} = this.props;
-    const {router: {goTo}} = store;
+    
     return (
       <div className="App">
         <h2 className="subtitle">Insert user name to get repositories and organizations in GitHub</h2>

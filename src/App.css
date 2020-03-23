@@ -4,8 +4,8 @@
   align-items: center;
   background: #d0def1;
   justify-content: space-between;
-  padding: 8%;
-  margin: 8% 5%;
+  padding: 12% 8%;
+  margin: 5%;
   grid-template-columns: 65% 25%;
 }
 
@@ -62,6 +62,8 @@
   justify-content: space-around;
   text-align: center;
   padding: 2% 10%;
+  background: #d0def1;
+  margin: 5%;
 }
 
 svg {
