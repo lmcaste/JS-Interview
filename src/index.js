@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
+import './App.css';
 import * as serviceWorker from './serviceWorker';
 import {MobxRouter, startRouter} from 'mobx-router';
 
@@ -15,7 +16,7 @@ startRouter(views, store);
 
 render((
     <Provider store={store}>
-    <div className="App">
+    <div className="index">
       <h1>{store.app.title}</h1>
       <MobxRouter/>
     </div>

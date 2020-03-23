@@ -5,7 +5,8 @@ class AppStore {
   constructor() {
     extendObservable(this, {
       title: 'JS Interview WebApp Project',
-      userName: '',
+      username: '',
+      loading: false,
       userRepos: [],
       userOrgs: []
     });
@@ -15,20 +16,27 @@ class AppStore {
     this.title = title;
   });
 
+  setLoader = action(loading => {
+    this.loading = loading;
+  });
+
   userRepositories = action(async userName => {
     if (userName || userName !== "" || userName !== null) {
+      this.setLoader(true);
       const res = await getRepos(userName);
       this.userRepos = res;
+      this.setLoader(false);
     }
   });
 
-  async userOrganizations(userData) {
+  userOrganizations = action(async userData => {
     if (userData || userData !== "" || userData !== null) {
+      this.setLoader(true);
       const data = await getUserData(userData);
       this.userOrgs = data.orgs;
-      
+      this.setLoader(false);
     }
-  }
+  });
 }
 
 export default AppStore;

@@ -2,7 +2,17 @@
 import React, { Component } from 'react';
 import { inject,observer } from 'mobx-react';
 
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+
 // function UserList({ store }) {
+
+  const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #5f2c82;
+`;
+
 class UserList extends Component {
 
   // Initialize the state
@@ -41,10 +51,17 @@ class UserList extends Component {
 
   
     return (
-      <div className="App">
+      <div className="list-results">
         <div>
-          <h1>List of Repositories</h1>
+          <h2>List of Repositories</h2>
           {/* Check to see if any items are found*/}
+          {store.app.loading ?
+          <ClipLoader
+            css={override}
+            size={150}
+            color={"#123abc"}
+            loading={"true"}
+          />: <p/>}
           {userRepos.length ? (
            <div>
            {/* Render the list of items */}
@@ -58,13 +75,13 @@ class UserList extends Component {
          </div>
           ) : (
             <div>
-              <h2>No List of Repositories Found</h2>
+              <h4>No List of Repositories Found</h4>
             </div>
           )
         }
         </div>
         <div>
-          <h1>List of Organizations</h1>
+          <h2>List of Organizations</h2>
           {/* Check to see if any items are found*/}
           {userOrgs.length ? (
             <div>
@@ -79,7 +96,7 @@ class UserList extends Component {
             </div>
           ) : (
             <div>
-              <h2>No List Of Organizations Found</h2>
+              <h4>No List Of Organizations Found</h4>
             </div>
           )
         }

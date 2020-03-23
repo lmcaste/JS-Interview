@@ -3,7 +3,6 @@ import {Link} from 'mobx-router';
 import views from '../config/views';
 import { inject, observer } from "mobx-react"
 
-
 class Home extends Component {
   // constructor(props){
   //   super(props);
@@ -14,10 +13,9 @@ class Home extends Component {
 
   submitReview = (e) => {
     e.preventDefault();
-    console.log(this);
-    this.props.store.app.setTitle('pepe');
 		this.props.store.app.userRepositories(this.state.username);
-		this.props.store.app.userOrganizations(this.state.username);
+    this.props.store.app.userOrganizations(this.state.username);
+
 	};
 
   handleChange = event => {
@@ -29,8 +27,8 @@ class Home extends Component {
     const {router: {goTo}} = store;
     return (
       <div className="App">
-        <h2>Insert user name to get repositories and organizations in GitHub</h2>
-        <Link view={views.userlist} store={store}> Go to gallery </Link>
+        <h2 className="subtitle">Insert user name to get repositories and organizations in GitHub</h2>
+        <div className="input-username">
         <input
           placeholder="Insert a username"
           type="text"
@@ -39,12 +37,13 @@ class Home extends Component {
           onChange={this.handleChange} />
         <Link to={{
           pathname: "./list",
-          data: [`${store.username}`] // your data array of objects
+          data: [`${store.username}`]
         }} view={views.userlist} store={store}>
           <button variant="raised" onClick={this.submitReview}> 
               Search
           </button>
         </Link>
+        </div>
       </div>
     );
   }

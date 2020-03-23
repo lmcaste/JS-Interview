@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  display: grid;
+  align-items: center;
+  background: #d0def1;
+  justify-content: space-between;
+  padding: 8%;
+  margin: 8% 5%;
+  grid-template-columns: 65% 25%;
+}
+
+.App .subtitle{
+  text-align: left;
 }
 
 .App-logo {
@@ -28,11 +39,72 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.input-username {
+  display: inline-grid;
+}
+
+.input-username input[name="username"] {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.input-username a button {
+  background: #5f3584;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 7px 20px;
+  width: -webkit-fill-available;
+}
+
+.list-results {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 2% 10%;
+}
+
+svg {
+  animation: 2s linear infinite svg-animation;
+  max-width: 100px;
+}
+
+@keyframes svg-animation {
+  0% {
+    transform: rotateZ(0deg);
   }
-  to {
+  100% {
+    transform: rotateZ(360deg)
+  }
+}
+
+circle {
+  animation: 1.4s ease-in-out infinite both circle-animation;
+  display: block;
+  fill: transparent;
+  stroke: #2f3d4c;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 280;
+  stroke-width: 10px;
+  transform-origin: 50% 50%;
+}
+
+@keyframes circle-animation {
+  0%,
+  25% {
+    stroke-dashoffset: 280;
+    transform: rotate(0);
+  }
+  
+  50%,
+  75% {
+    stroke-dashoffset: 75;
+    transform: rotate(45deg);
+  }
+  
+  100% {
+    stroke-dashoffset: 280;
     transform: rotate(360deg);
   }
 }

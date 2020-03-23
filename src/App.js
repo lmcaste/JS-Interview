@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import { Route, Switch } from 'react-router-dom';
-import './App.css';
 
 // import { decorate, observable, action, computed } from 'mobx';
 
@@ -20,6 +19,9 @@ class App extends Component {
 					{/* <Form store={reviewStore} />
 					<Dashboard store={reviewStore} />
 					<Reviews store={reviewStore} /> */}
+					<svg className="spinner" viewBox="0 0 50 50">
+						<circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+					</svg>
 				</div>
 				{/* <Switch store={reviewStore}>
 					<Route exact path="/" component={Home} store={reviewStore}/>
@@ -29,7 +31,12 @@ class App extends Component {
 		);
 		return (
 			// <Switch>
+			<div>
+			<svg className="spinner" viewBox="0 0 50 50">
+						<circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+					</svg>
 				<App className="App"/>
+				</div>
 			// </Switch>
 		);
 	}
