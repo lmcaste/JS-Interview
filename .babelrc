@@ -1,6 +1,17 @@
 {
   "presets": [
-    "@babel/preset-flow",
-    "react"
+    "react",
+    "es2015",
+    "stage-1",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", {
+      "legacy": true
+    }],
+    ["@babel/plugin-proposal-class-properties", {
+      "loose": true
+    }],
+    ["@babel/plugin-syntax-decorators"]
   ]
 }

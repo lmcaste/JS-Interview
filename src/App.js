@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import UserList from './pages/UserList';
+
+// import { decorate, observable, action, computed } from 'mobx';
+
+// decorate(Store, {
+// 	reviewList: observable,
+// 	addReview: action,
+// 	getRepos: action,
+// 	averageScore: computed,
+// 	reviewCount: computed
+// });
 
 class App extends Component {
-  render() {
-    const App = () => (
-      <div>
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route path='/list' component={UserList}/>
-        </Switch>
-      </div>
-    )
-    return (
-      <Switch>
-        <App/>
-      </Switch>
-    );
-  }
+	render() {
+		const App = () => (
+			<div>
+				<div className="container">
+					{/* <Form store={reviewStore} />
+					<Dashboard store={reviewStore} />
+					<Reviews store={reviewStore} /> */}
+				</div>
+				{/* <Switch store={reviewStore}>
+					<Route exact path="/" component={Home} store={reviewStore}/>
+					<Route path="/list" component={UserList} store={reviewStore}/>
+				</Switch> */}
+			</div>
+		);
+		return (
+			// <Switch>
+				<App className="App"/>
+			// </Switch>
+		);
+	}
 }
 
 export default App;

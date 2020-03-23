@@ -1,51 +1,56 @@
 
 import React, { Component } from 'react';
-import { getRepos, getUserData } from '../github-api.js';
+import { inject,observer } from 'mobx-react';
 
+// function UserList({ store }) {
 class UserList extends Component {
+
   // Initialize the state
-  constructor(props){
-    super(props);
-    this.state = {
-      userRepositories: [],
-      userOrganizations:[] 
-    }
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     userRepositories: [],
+  //     userOrganizations:[] 
+  //   }
+  // }
 
   // Fetch the list on first mount
-  componentDidMount() {
-    this.userRepositories(this.props.location.data);
-    this.userOrganizations();
-  }
+  // componentDidMount() {
+  //   // this.userRepositories(this.props.location.data);
+  //   this.userOrganizations();
+  // }
 
-  async userRepositories(userName) {
-    if (userName || userName !== "" || userName !== null) {
-      const res = await getRepos(userName);
-      this.setState({ userRepositories: res });
-    }
-  }
+  // async userRepositories(userName) {
+  //   if (userName || userName !== "" || userName !== null) {
+  //     const res = await getRepos(userName);
+  //     this.setState({ userRepositories: res });
+  //   }
+  // }
 
-  async userOrganizations(userData) {
-    if (userData || userData !== "" || userData !== null) {
-      const data = await getUserData(userData);
-      this.setState({ userOrganizations: data.orgs });
-    }
-  }
+  // async userOrganizations(userData) {
+  //   if (userData || userData !== "" || userData !== null) {
+  //     const data = await getUserData(userData);
+  //     this.setState({ userOrganizations: data.orgs });
+  //   }
+  // }
 
-  render() {
-    const { userRepositories, userOrganizations } = this.state;
+  render() { 
+  const { store } = this.props;
+  const { router: {goTo} } = store;
+  const { userRepos, userOrgs } = this.props.store.app;
 
+  
     return (
       <div className="App">
         <div>
           <h1>List of Repositories</h1>
           {/* Check to see if any items are found*/}
-          {userRepositories.length ? (
+          {userRepos.length ? (
            <div>
            {/* Render the list of items */}
-           {userRepositories.map((user) => {
+           {userRepos.map((user) => {
              return(
-               <div key={user.name}>
+               <div key={user.id}>
                  {user.name}
                </div>
              );
@@ -61,13 +66,13 @@ class UserList extends Component {
         <div>
           <h1>List of Organizations</h1>
           {/* Check to see if any items are found*/}
-          {userOrganizations.length ? (
+          {userOrgs.length ? (
             <div>
               {/* Render the list of items */}
-              {userOrganizations.map((item) => {
+              {userOrgs.map((org) => {
                 return(
-                  <div>
-                    {item.login}
+                  <div key={org.id}>
+                    {org.login}
                   </div>
                 );
               })}
@@ -83,4 +88,4 @@ class UserList extends Component {
     );
   }
 }
-export default UserList;
+export default inject('store')(observer(UserList));
