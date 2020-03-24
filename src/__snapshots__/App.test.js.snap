@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FocusInput matches snapshot 1`] = `
+<div
+  class="App"
+>
+  <h3
+    class="subtitle"
+  >
+    Insert user name to get repositories and organizations in GitHub
+  </h3>
+  <div
+    class="input-username"
+  >
+    <input
+      label="username"
+      name="username"
+      placeholder="Insert a username"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

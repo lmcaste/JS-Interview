@@ -7,6 +7,7 @@ class AppStore {
       title: 'JS Interview WebApp Project',
       username: '',
       loading: false,
+      error: false,
       userRepos: [],
       userOrgs: []
     });
@@ -23,23 +24,34 @@ class AppStore {
   userRepositories = action(async userName => {
     if (userName || userName !== "" || userName !== null) {
       this.setLoader(true);
-      const res = await getRepos(userName);
-      if (res.message === 'Not Found') {
-        console.log('oops')
-      }
-      else {
+      try {
+        const res = await getRepos(userName);
         this.userRepos = res;
         this.setLoader(false);
-      } 
+      } catch(err) {
+        this.userRepos = [];
+        this.error = true;
+      }
+      finally {
+        this.setLoader(false);
+      }
     }
   });
 
   userOrganizations = action(async userData => {
     if (userData || userData !== "" || userData !== null) {
       this.setLoader(true);
-      const data = await getUserData(userData);
-      this.userOrgs = data.orgs;
-      this.setLoader(false);
+      try {
+        const data = await getUserData(userData);
+        this.userOrgs = data.orgs;
+        this.setLoader(false);
+      } catch(err) {
+        this.userOrgs = [];
+        this.error = true;
+      }
+      finally {
+        this.setLoader(false);
+      }
     }
   });
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'mobx-router';
 import views from '../config/views';
 import { inject, observer } from "mobx-react"
+import Button from 'react-bootstrap/Button';
 
 class Home extends Component {
   submitReview = (e) => {
@@ -16,24 +17,25 @@ class Home extends Component {
 
   render() { 
     const {store} = this.props;
-    
+
     return (
       <div className="App">
-        <h2 className="subtitle">Insert user name to get repositories and organizations in GitHub</h2>
+        <h3 className="subtitle">Insert user name to get repositories and organizations in GitHub</h3>
         <div className="input-username">
         <input
           placeholder="Insert a username"
           type="text"
           name="username"
+          label="username"
           value={store.username}
           onChange={this.handleChange} />
         <Link to={{
           pathname: "./list",
           data: [`${store.username}`]
         }} view={views.userlist} store={store}>
-          <button variant="raised" onClick={this.submitReview}> 
+          <Button variant="raised" onClick={this.submitReview}> 
               Search
-          </button>
+          </Button>
         </Link>
         </div>
       </div>

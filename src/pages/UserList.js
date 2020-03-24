@@ -18,8 +18,10 @@ class UserList extends Component {
 
   
     return (
-      <div className="list-results">
-        <div>
+      <div>
+      {!store.app.error ? (
+        <div className="list-results">
+        <div >
           <h2>List of Repositories</h2>
           {store.app.loading ?
           <ClipLoader
@@ -27,8 +29,8 @@ class UserList extends Component {
             size={150}
             color={"#123abc"}
             loading={"true"}
-          />: <p/>}
-          {userRepos.length ? (
+          />: <p />}
+          {userRepos.length  ? (
            <div>
            {userRepos.map((user) => {
              return(
@@ -37,7 +39,7 @@ class UserList extends Component {
                </div>
              );
            })}
-         </div>
+        </div>
           ) : (
             <div>
               <h4>No List of Repositories Found</h4>
@@ -67,6 +69,10 @@ class UserList extends Component {
         }
         </div>
       </div>
+      ) : (
+        <p className="list-results">ERROR! USER NOT FOUND</p>
+      )}
+      </div> 
     );
   }
 }
